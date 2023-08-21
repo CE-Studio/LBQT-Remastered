@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://2jcr5e3e7rwd"]
+
+[ext_resource type="Shader" uid="uid://bc6g1gj0l2fx4" path="res://textures/mat/portfillshade.tres" id="1_aohom"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_aohom")
