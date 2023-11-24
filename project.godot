@@ -12,7 +12,7 @@ config_version=5
 
 config/name="LBQT: Remastered"
 run/main_scene="res://levels/test.tscn"
-config/features=PackedStringArray("4.2", "Forward Plus")
+config/features=PackedStringArray("4.2", "Double Precision", "Forward Plus")
 config/icon="res://icon.svg"
 
 [input]
