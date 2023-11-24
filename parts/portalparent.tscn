@@ -1,0 +1,137 @@
+[gd_scene load_steps=17 format=3 uid="uid://b886umoydbyh2"]
+
+[ext_resource type="Script" path="res://scripts/portalparent.gd" id="1_ybm5i"]
+[ext_resource type="Script" path="res://scripts/portal.gd" id="2_x43uk"]
+[ext_resource type="Shader" uid="uid://bc6g1gj0l2fx4" path="res://textures/mat/portfillshade.tres" id="3_jaqkd"]
+[ext_resource type="ArrayMesh" uid="uid://qab0ghk7xeej" path="res://models/portal.obj" id="4_gidiw"]
+[ext_resource type="Material" uid="uid://cn7x5bmoa0bqp" path="res://textures/mat/orange.tres" id="5_e50q2"]
+[ext_resource type="ArrayMesh" uid="uid://cthdoqfcn0myr" path="res://models/portalring.obj" id="6_x2wi1"]
+[ext_resource type="Material" uid="uid://b0ns7ihtdbt4o" path="res://textures/mat/cardboard.tres" id="7_lrle2"]
+[ext_resource type="Material" uid="uid://15nu7wy04mgv" path="res://textures/mat/blue.tres" id="8_8pv77"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o8ubj"]
+viewport_path = NodePath("blue/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqjnd"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_jaqkd")
+shader_parameter/Texture2DParameter = SubResource("ViewportTexture_o8ubj")
+
+[sub_resource type="PrismMesh" id="PrismMesh_3immi"]
+size = Vector3(0.615, 0.345, 0.535)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a4htx"]
+size = Vector3(1.0323, 2.07423, 0.0249901)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_wyjl0"]
+viewport_path = NodePath("orange/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cnvst"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_jaqkd")
+shader_parameter/Texture2DParameter = SubResource("ViewportTexture_wyjl0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_25qsk"]
+size = Vector3(4.05527, 1, 2.87943)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0vupu"]
+size = Vector2(2, 2.15275)
+
+[node name="portalparent" type="Node3D"]
+script = ExtResource("1_ybm5i")
+
+[node name="orange" type="RigidBody3D" parent="." groups=["grab", "heavy"]]
+process_mode = 3
+transform = Transform3D(-1, 8.74228e-08, 0, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, -1, 1, 0)
+continuous_cd = true
+can_sleep = false
+script = ExtResource("2_x43uk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="orange"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_wqjnd")
+mesh = ExtResource("4_gidiw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="orange"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("5_e50q2")
+mesh = ExtResource("6_x2wi1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="orange"]
+transform = Transform3D(-4.37114e-08, -8.74228e-08, 1, 7.64274e-15, -1, -8.74228e-08, 1, 3.82137e-15, 4.37114e-08, 0, 0, 0)
+layers = 2
+material_override = ExtResource("7_lrle2")
+mesh = ExtResource("4_gidiw")
+
+[node name="SubViewport" type="SubViewport" parent="orange"]
+size = Vector2i(1152, 648)
+
+[node name="Camera3D" type="Camera3D" parent="orange/SubViewport"]
+cull_mask = 1048573
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="orange/SubViewport/Camera3D"]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, 1, 1.91069e-15, 4.37114e-08, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("PrismMesh_3immi")
+skeleton = NodePath("../../../../blue/SubViewport/Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="orange"]
+shape = SubResource("BoxShape3D_a4htx")
+
+[node name="Node3D" type="Node3D" parent="orange"]
+
+[node name="blue" type="RigidBody3D" parent="." groups=["grab", "heavy"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1, 1, 0)
+continuous_cd = true
+can_sleep = false
+script = ExtResource("2_x43uk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="blue"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_cnvst")
+mesh = ExtResource("4_gidiw")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="blue"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("8_8pv77")
+mesh = ExtResource("6_x2wi1")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="blue"]
+transform = Transform3D(-4.37114e-08, -8.74228e-08, 1, 7.64274e-15, -1, -8.74228e-08, 1, 3.82137e-15, 4.37114e-08, 0, 0, 0)
+layers = 4
+material_override = ExtResource("7_lrle2")
+mesh = ExtResource("4_gidiw")
+
+[node name="SubViewport" type="SubViewport" parent="blue"]
+size = Vector2i(1152, 648)
+
+[node name="Camera3D" type="Camera3D" parent="blue/SubViewport"]
+cull_mask = 1048571
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="blue/SubViewport/Camera3D"]
+transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, 1, 1.91069e-15, 4.37114e-08, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("PrismMesh_3immi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="blue"]
+shape = SubResource("BoxShape3D_a4htx")
+
+[node name="Node3D" type="Node3D" parent="blue"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.473477, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_25qsk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.96591, 0)
+mesh = SubResource("PlaneMesh_0vupu")
+surface_material_override/0 = ExtResource("5_e50q2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.96591, 0)
+mesh = SubResource("PlaneMesh_0vupu")
+surface_material_override/0 = ExtResource("8_8pv77")

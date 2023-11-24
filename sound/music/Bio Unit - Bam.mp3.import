@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bxvn0cubpq4y8"
+path="res://.godot/imported/Bio Unit - Bam.mp3-2daebcc1f8a04ce7bbf833d4bef3638f.mp3str"
+
+[deps]
+
+source_file="res://sound/music/Bio Unit - Bam.mp3"
+dest_files=["res://.godot/imported/Bio Unit - Bam.mp3-2daebcc1f8a04ce7bbf833d4bef3638f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

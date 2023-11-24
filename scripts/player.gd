@@ -1,3 +1,4 @@
+@icon("res://textures/ico/player.svg")
 extends CharacterBody3D
 class_name Player
 
@@ -55,6 +56,9 @@ func _input(event: InputEvent) -> void:
                 obj.axis_lock_linear_z = true
                 obj.collision_layer = 0b0
                 obj.collision_mask = 0b0
+            elif obj.is_in_group("press"):
+                if obj.has_method("press"):
+                    obj.press()
 
 
 func _physics_process(delta: float) -> void:

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://c482u1ckls2mw"]
+
+[ext_resource type="Script" path="res://scripts/cube.gd" id="1_xmmcv"]
+[ext_resource type="Material" uid="uid://b0ns7ihtdbt4o" path="res://textures/mat/cardboard.tres" id="2_apyib"]
+[ext_resource type="ArrayMesh" uid="uid://kudf8v2tu7o5" path="res://models/box.obj" id="3_0mo3o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fwayl"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="cube" type="RigidBody3D" groups=["grab", "heavy"]]
+script = ExtResource("1_xmmcv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.335, 0, 0, 0, 1.335, 0, 0, 0, 1.335, 0, 0, 0)
+material_override = ExtResource("2_apyib")
+mesh = ExtResource("3_0mo3o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fwayl")
