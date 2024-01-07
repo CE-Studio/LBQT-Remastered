@@ -64,10 +64,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
 [node name="portalparent" parent="." instance=ExtResource("5_tk68a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 0)
 
-[node name="pedestalButton" parent="." instance=ExtResource("6_v3hwi")]
+[node name="pedestalButton" parent="." node_paths=PackedStringArray("connections") instance=ExtResource("6_v3hwi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+connections = [NodePath("../door")]
 
-[node name="cubeButton" parent="." instance=ExtResource("7_if7uh")]
+[node name="cubeButton" parent="." node_paths=PackedStringArray("connections") instance=ExtResource("7_if7uh")]
+connections = [NodePath("../door")]
 
 [node name="door" parent="." instance=ExtResource("8_i6vg0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)

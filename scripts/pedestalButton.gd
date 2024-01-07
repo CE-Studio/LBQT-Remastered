@@ -8,6 +8,7 @@ class_name PedestalButton
 
 @onready var time := $Timer
 @onready var paddle := $Cube_002/Cube_003
+@onready var aud := $AudioStreamPlayer3D
 
 
 func press():
@@ -17,8 +18,8 @@ func press():
         for i in connections:
             if i.has_method("connectionOn"):
                 i.connectionOn()
-    else:
-        print("aaa")
+        aud.stream = preload("res://sound/button/pedOn.wav")
+        aud.play()
                 
                 
 func unpress():
@@ -28,6 +29,8 @@ func unpress():
         for i in connections:
             if i.has_method("connectionOff"):
                 i.connectionOff()
+        aud.stream = preload("res://sound/button/pedOff.wav")
+        aud.play()
 
 
 func _on_body_entered(body):

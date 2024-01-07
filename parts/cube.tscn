@@ -1,13 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://c482u1ckls2mw"]
+[gd_scene load_steps=14 format=3 uid="uid://c482u1ckls2mw"]
 
 [ext_resource type="Script" path="res://scripts/cube.gd" id="1_xmmcv"]
 [ext_resource type="Material" uid="uid://b0ns7ihtdbt4o" path="res://textures/mat/cardboard.tres" id="2_apyib"]
 [ext_resource type="ArrayMesh" uid="uid://kudf8v2tu7o5" path="res://models/box.obj" id="3_0mo3o"]
+[ext_resource type="AudioStream" uid="uid://dptppc7l3i3np" path="res://sound/physics/cardboard/card0.wav" id="4_li2pu"]
+[ext_resource type="AudioStream" uid="uid://cpk1b4gpdd20n" path="res://sound/physics/cardboard/card1.wav" id="5_lmady"]
+[ext_resource type="AudioStream" uid="uid://cvw8lkj44vomn" path="res://sound/physics/cardboard/card2.wav" id="6_rdct4"]
+[ext_resource type="AudioStream" uid="uid://bjma4dbwo4nnk" path="res://sound/physics/cardboard/card3.wav" id="7_8y4yj"]
+[ext_resource type="AudioStream" uid="uid://4bdsubelap83" path="res://sound/physics/cardboard/card4.wav" id="8_u66j0"]
+[ext_resource type="AudioStream" uid="uid://28jvlt1cok48" path="res://sound/physics/cardboard/card5.wav" id="9_y4dxd"]
+[ext_resource type="AudioStream" uid="uid://dg75i8llxts2n" path="res://sound/physics/cardboard/card6.wav" id="10_xc44c"]
+[ext_resource type="AudioStream" uid="uid://geobiplqnqmo" path="res://sound/physics/cardboard/card7.wav" id="11_jhr7p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fwayl"]
 size = Vector3(0.5, 0.5, 0.5)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_n8r0u"]
+random_pitch = 2.19
+streams_count = 8
+stream_0/stream = ExtResource("4_li2pu")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("5_lmady")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("6_rdct4")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("7_8y4yj")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("8_u66j0")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("9_y4dxd")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("10_xc44c")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("11_jhr7p")
+stream_7/weight = 1.0
+
 [node name="cube" type="RigidBody3D" groups=["grab", "heavy"]]
+max_contacts_reported = 5
+contact_monitor = true
 script = ExtResource("1_xmmcv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -17,3 +47,9 @@ mesh = ExtResource("3_0mo3o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_fwayl")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_n8r0u")
+volume_db = -38.0952
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

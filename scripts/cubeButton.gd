@@ -7,6 +7,7 @@ class_name CubeButton
 @export var connections:Array[Node]
 
 @onready var plate := $Cube_001
+@onready var aud := $AudioStreamPlayer3D
 
 
 func press():
