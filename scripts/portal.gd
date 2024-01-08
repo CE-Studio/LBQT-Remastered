@@ -7,6 +7,7 @@ var svp:SubViewport
 var transformer:Node3D
 var other:Portal
 var cam:Camera3D
+var aud:AudioStreamPlayer3D
 
 
 func _ready() -> void:
@@ -19,6 +20,7 @@ func _ready() -> void:
     else:
         other = $"../orange"
     cam = $SubViewport/Camera3D
+    aud = $AudioStreamPlayer3D
 
 
 func resize():
@@ -31,3 +33,7 @@ func _process(_delta):
     transformer.rotation_degrees.y += 180
     other.transformer.transform = transformer.transform
     other.cam.global_transform = other.transformer.global_transform
+
+
+func _on_body_entered(body):
+    aud.play()

@@ -15,6 +15,8 @@ func press():
     for i in connections:
         if i.has_method("connectionOn"):
             i.connectionOn()
+    aud.stream = preload("res://sound/button/padOn.wav")
+    aud.play()
             
             
 func unpress():
@@ -22,6 +24,8 @@ func unpress():
     for i in connections:
         if i.has_method("connectionOff"):
             i.connectionOff()
+    aud.stream = preload("res://sound/button/padOff.wav")
+    aud.play()
 
 
 func _on_body_entered(body):
