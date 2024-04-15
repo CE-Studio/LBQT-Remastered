@@ -4,4 +4,4 @@ class_name PortalParent
 
 
 func _ready():
-    pass
+	pass

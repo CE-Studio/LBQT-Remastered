@@ -9,12 +9,12 @@ var count:int = 0
 
 
 func connectionOn() :
-    count += 1
-    animTree["parameters/conditions/close"] = count <= threshold
-    animTree["parameters/conditions/open"] = count > threshold
+	count += 1
+	animTree["parameters/conditions/close"] = count <= threshold
+	animTree["parameters/conditions/open"] = count > threshold
 
 
 func connectionOff() :
-    count -= 1
-    animTree["parameters/conditions/close"] = count <= threshold
-    animTree["parameters/conditions/open"] = count > threshold
+	count -= 1
+	animTree["parameters/conditions/close"] = count <= threshold
+	animTree["parameters/conditions/open"] = count > threshold

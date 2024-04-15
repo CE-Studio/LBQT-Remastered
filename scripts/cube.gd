@@ -7,4 +7,4 @@ class_name  Cube
 
 
 func _on_body_entered(body):
-    aud.play()
+	aud.play()

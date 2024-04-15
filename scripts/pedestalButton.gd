@@ -12,27 +12,27 @@ class_name PedestalButton
 
 
 func press():
-    if time.is_stopped():
-        time.start(timeout)
-        paddle.position = Vector3(0, 0.052, 0)
-        for i in connections:
-            if i.has_method("connectionOn"):
-                i.connectionOn()
-        aud.stream = preload("res://sound/button/pedOn.wav")
-        aud.play()
-                
-                
+	if time.is_stopped():
+		time.start(timeout)
+		paddle.position = Vector3(0, 0.052, 0)
+		for i in connections:
+			if i.has_method("connectionOn"):
+				i.connectionOn()
+		aud.stream = preload("res://sound/button/pedOn.wav")
+		aud.play()
+				
+				
 func unpress():
-    if !oneshot:
-        time.stop()
-        paddle.position = Vector3(0, 0.082, 0)
-        for i in connections:
-            if i.has_method("connectionOff"):
-                i.connectionOff()
-        aud.stream = preload("res://sound/button/pedOff.wav")
-        aud.play()
+	if !oneshot:
+		time.stop()
+		paddle.position = Vector3(0, 0.082, 0)
+		for i in connections:
+			if i.has_method("connectionOff"):
+				i.connectionOff()
+		aud.stream = preload("res://sound/button/pedOff.wav")
+		aud.play()
 
 
 func _on_body_entered(body):
-    if body.name != "player":
-        press()
+	if body.name != "player":
+		press()
