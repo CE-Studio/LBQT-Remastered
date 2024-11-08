@@ -13,6 +13,7 @@ config_version=5
 config/name="LBQT: Remastered"
 run/main_scene="res://levels/test.tscn"
 config/features=PackedStringArray("4.3", "Double Precision", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [input]

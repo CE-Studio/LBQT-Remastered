@@ -5,6 +5,8 @@ class_name Player
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+const GROUNDACCEL = 20.0
+const AIRACCEL = 7.0
 
 
 static var instance:Player
@@ -75,11 +77,22 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		var tv := Vector2(velocity.x, velocity.z)
+		var td := Vector2(direction.x * SPEED, direction.z * SPEED)
+		if is_on_floor():
+			if tv != Vector2.ZERO and abs(tv.angle_to(td)) > 2.0:
+				tv = Vector2.ZERO
+			else:
+				tv = tv.move_toward(td, delta * GROUNDACCEL)
+		else:
+			tv = tv.move_toward(td, delta * AIRACCEL)
+		velocity.x = tv.x
+		velocity.z = tv.y
+	elif is_on_floor():
+		var tv := Vector2(velocity.x, velocity.z)
+		tv = tv.move_toward(Vector2.ZERO, delta * GROUNDACCEL)
+		velocity.x = tv.x
+		velocity.z = tv.y
 
 	if grab.get_child_count() > 0:
 		grab.get_child(0).position = Vector3.ZERO
