@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://hp2mcm2xewol"]
+[gd_scene load_steps=18 format=3 uid="uid://hp2mcm2xewol"]
 
 [ext_resource type="Script" path="res://scripts/pause.gd" id="2_qrx8h"]
 [ext_resource type="PackedScene" uid="uid://bbv4l13q3bvuv" path="res://parts/player.tscn" id="2_yru0u"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://c544b4prfhipr" path="res://parts/pedestal_button.tscn" id="6_v3hwi"]
 [ext_resource type="PackedScene" uid="uid://dh7bl3woycvkc" path="res://parts/cube_button.tscn" id="7_if7uh"]
 [ext_resource type="PackedScene" uid="uid://cfgxkyqjn84jb" path="res://parts/door.tscn" id="8_i6vg0"]
+[ext_resource type="PackedScene" uid="uid://dfk7c5dfekm7b" path="res://models/antlines/antlines-c2.glb" id="9_ymben"]
+[ext_resource type="PackedScene" uid="uid://dibtcct4v7ako" path="res://models/antlines/antlines-s2.glb" id="10_q7ngb"]
+[ext_resource type="PackedScene" uid="uid://kjxgt25tbusk" path="res://models/antlines/antlines-s.glb" id="11_ggger"]
+[ext_resource type="PackedScene" uid="uid://djv2n746do5j0" path="res://models/antlines/antlines-c.glb" id="12_yib3m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c41ox"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -66,10 +70,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 0)
 
 [node name="pedestalButton" parent="." node_paths=PackedStringArray("connections") instance=ExtResource("6_v3hwi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
-connections = [NodePath("../door")]
+connections = [NodePath("../door"), NodePath("../antlines-s3")]
 
 [node name="cubeButton" parent="." node_paths=PackedStringArray("connections") instance=ExtResource("7_if7uh")]
-connections = [NodePath("../door")]
+connections = [NodePath("../door"), NodePath("../antlines-c2")]
 
 [node name="door" parent="." instance=ExtResource("8_i6vg0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="antlines-s3" parent="." node_paths=PackedStringArray("chainOut") instance=ExtResource("10_q7ngb")]
+transform = Transform3D(0.934405, 0, 0.356213, 0, 1, 0, -0.356213, 0, 0.934405, -4.95977, 0, 0.296455)
+chainOut = NodePath("antlines-s")
+
+[node name="antlines-s" parent="antlines-s3" instance=ExtResource("11_ggger")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="antlines-c2" parent="." node_paths=PackedStringArray("chainOut") instance=ExtResource("9_ymben")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.007)
+chainOut = NodePath("antlines-s2")
+
+[node name="antlines-s2" parent="antlines-c2" node_paths=PackedStringArray("chainOut") instance=ExtResource("10_q7ngb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+chainOut = NodePath("antlines-s")
+
+[node name="antlines-s" parent="antlines-c2/antlines-s2" node_paths=PackedStringArray("chainOut") instance=ExtResource("11_ggger")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+chainOut = NodePath("antlines-s2")
+
+[node name="antlines-s2" parent="antlines-c2/antlines-s2/antlines-s" node_paths=PackedStringArray("chainOut") instance=ExtResource("10_q7ngb")]
+transform = Transform3D(-1, 0, 1.22465e-16, 0, 1, 0, -1.22465e-16, 0, -1, 0, 0, 0)
+chainOut = NodePath("antlines-c")
+
+[node name="antlines-c" parent="antlines-c2/antlines-s2/antlines-s/antlines-s2" node_paths=PackedStringArray("chainOut") instance=ExtResource("12_yib3m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2.22045e-16)
+chainOut = NodePath("antlines-c")
+
+[node name="antlines-c" parent="antlines-c2/antlines-s2/antlines-s/antlines-s2/antlines-c" node_paths=PackedStringArray("chainOut") instance=ExtResource("12_yib3m")]
+transform = Transform3D(-1, 0, -1.22465e-16, 0, 1, 0, 1.22465e-16, 0, -1, 1, 0, -1)
+chainOut = NodePath("antlines-c")
+
+[node name="antlines-c" parent="antlines-c2/antlines-s2/antlines-s/antlines-s2/antlines-c/antlines-c" node_paths=PackedStringArray("chainOut") instance=ExtResource("12_yib3m")]
+transform = Transform3D(6.12323e-17, 0, -1, 0, 1, 0, 1, 0, 6.12323e-17, -0.5, 0, -0.5)
+chainOut = NodePath("antlines-c")
+
+[node name="antlines-c" parent="antlines-c2/antlines-s2/antlines-s/antlines-s2/antlines-c/antlines-c/antlines-c" instance=ExtResource("12_yib3m")]
+transform = Transform3D(6.12323e-17, 0, -1, 0, 1, 0, 1, 0, 6.12323e-17, -0.5, 0, -0.5)
