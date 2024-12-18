@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bwv3mcfu8ehig"
+path="res://.godot/imported/flap.obj-6fffdd0b7f5838019c5d4984faeb7bd0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/flap.obj-6fffdd0b7f5838019c5d4984faeb7bd0.mesh"]
+
+source_file="res://models/dropper/flap.obj"
+dest_files=["res://.godot/imported/flap.obj-6fffdd0b7f5838019c5d4984faeb7bd0.mesh", "res://.godot/imported/flap.obj-6fffdd0b7f5838019c5d4984faeb7bd0.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

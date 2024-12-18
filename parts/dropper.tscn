@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://cufeu3a328pa5"]
+
+[ext_resource type="Material" uid="uid://opt20r3lh406" path="res://textures/mat/metal1.tres" id="1_yk364"]
+[ext_resource type="ArrayMesh" uid="uid://rkl68ullxdyh" path="res://models/dropper/mesh.obj" id="2_2hryx"]
+[ext_resource type="Material" uid="uid://rdx16gc4l7ht" path="res://textures/mat/osb.tres" id="3_h1472"]
+[ext_resource type="ArrayMesh" uid="uid://bwv3mcfu8ehig" path="res://models/dropper/flap.obj" id="4_qkkkl"]
+[ext_resource type="ArrayMesh" uid="uid://drfn6a20wdh7g" path="res://models/dropper/hinge.obj" id="5_7g3f8"]
+
+[node name="dropper" type="Node3D"]
+
+[node name="mesh" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_yk364")
+mesh = ExtResource("2_2hryx")
+
+[node name="flap" type="MeshInstance3D" parent="."]
+material_override = ExtResource("3_h1472")
+mesh = ExtResource("4_qkkkl")
+
+[node name="hinge" type="MeshInstance3D" parent="flap"]
+material_override = ExtResource("1_yk364")
+mesh = ExtResource("5_7g3f8")
+skeleton = NodePath("../..")
