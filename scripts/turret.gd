@@ -3,7 +3,8 @@ extends RigidBody3D
 class_name Turret
 
 
-static var rounds:int = 50
+static var rounds:int = 300
+static var bullet:PackedScene = preload("res://parts/bullet.tscn")
 
 @export var trackingOther := false
 @export var others:Array[NodePath]
@@ -13,11 +14,14 @@ static var rounds:int = 50
 @onready var mount:MeshInstance3D = $base/mountarm
 @onready var gun:Node3D = $"base/mountarm/head/gun body"
 @onready var barrel:MeshInstance3D = $"base/mountarm/head/gun body/gun body/barrel"
+@onready var bpoint:Marker3D = $"base/mountarm/head/gun body/Marker3D"
+@onready var worldspace:Node3D = get_parent()
 
 var _other:Array
 
 var spinup := false
 var spinspeed := 0.0
+var firetime := 0.0
 
 func _ready():
 	point.add_exception(self)
@@ -40,6 +44,16 @@ func _process(delta):
 		if point.is_colliding():
 			if point.get_collider() == Player.instance:
 				spinup = true
+				if rounds > 0 and spinspeed == 15:
+					firetime += delta
+					if firetime >= 0.1:
+						rounds -= 1
+						firetime -= 0.1
+						var b:RigidBody3D = bullet.instantiate()
+						worldspace.add_child(b)
+						b.global_rotation = bpoint.global_rotation
+						b.global_position = bpoint.global_position
+						b.apply_central_impulse(b.global_transform.basis * Vector3(0, 30, 0))
 			else:
 				spinup = false
 		else:

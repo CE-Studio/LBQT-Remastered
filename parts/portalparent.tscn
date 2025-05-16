@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://b886umoydbyh2"]
 
-[ext_resource type="Script" path="res://scripts/portalparent.gd" id="1_ybm5i"]
-[ext_resource type="Script" path="res://scripts/portal.gd" id="2_x43uk"]
+[ext_resource type="Script" uid="uid://d1geyan72gjtc" path="res://scripts/portalparent.gd" id="1_ybm5i"]
+[ext_resource type="Script" uid="uid://2w3lapfcv6qw" path="res://scripts/portal.gd" id="2_x43uk"]
 [ext_resource type="Shader" uid="uid://bc6g1gj0l2fx4" path="res://textures/mat/portfillshade.tres" id="3_jaqkd"]
 [ext_resource type="ArrayMesh" uid="uid://qab0ghk7xeej" path="res://models/portal.obj" id="4_gidiw"]
 [ext_resource type="Material" uid="uid://cn7x5bmoa0bqp" path="res://textures/mat/orange.tres" id="5_e50q2"]

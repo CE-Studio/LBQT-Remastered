@@ -1,6 +1,6 @@
 [gd_scene load_steps=119 format=4 uid="uid://d3uov4m8hsxs5"]
 
-[ext_resource type="Script" path="res://scripts/turret.gd" id="1_olwny"]
+[ext_resource type="Script" uid="uid://bcfvxbtxtsfgw" path="res://scripts/turret.gd" id="1_olwny"]
 [ext_resource type="Material" uid="uid://opt20r3lh406" path="res://textures/mat/metal1.tres" id="2_x31mc"]
 [ext_resource type="Material" uid="uid://b0ns7ihtdbt4o" path="res://textures/mat/cardboard.tres" id="3_t4nec"]
 [ext_resource type="Material" uid="uid://cdg6s84dxoo23" path="res://textures/mat/orangeplastic.tres" id="4_011lq"]
@@ -1415,6 +1415,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_srq6v")
 [node name="RayCast3D" type="RayCast3D" parent="base/mountarm/head/gun body"]
 transform = Transform3D(1, 1.39698e-09, -3.72529e-08, 3.37604e-08, 1, 7.45058e-09, 2.23517e-08, 2.23517e-08, 1, -0.129327, 0.084769, 0.0251584)
 target_position = Vector3(1.45519e-11, 1.45519e-11, 10)
+
+[node name="Marker3D" type="Marker3D" parent="base/mountarm/head/gun body"]
+transform = Transform3D(1, 0, 0, 0, 6.12323e-17, -1, 0, 1, 6.12323e-17, -0.129947, 0.0827656, 0.844014)
 
 [node name="Cube_002" type="MeshInstance3D" parent="base/mountarm/head"]
 transform = Transform3D(0.997545, -0.0618243, 0.0329093, 0.0589291, 0.994834, 0.0826686, -0.0378502, -0.0805263, 0.996033, 0.112184, 0.148064, -0.216491)

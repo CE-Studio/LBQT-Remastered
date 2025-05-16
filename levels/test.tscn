@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://hp2mcm2xewol"]
+[gd_scene load_steps=19 format=3 uid="uid://hp2mcm2xewol"]
 
-[ext_resource type="Script" path="res://scripts/pause.gd" id="2_qrx8h"]
+[ext_resource type="Script" uid="uid://x4ut8rbvwkjk" path="res://scripts/pause.gd" id="2_qrx8h"]
 [ext_resource type="PackedScene" uid="uid://bbv4l13q3bvuv" path="res://parts/player.tscn" id="2_yru0u"]
 [ext_resource type="PackedScene" uid="uid://c482u1ckls2mw" path="res://parts/cube.tscn" id="3_ul2kb"]
 [ext_resource type="PackedScene" uid="uid://d3uov4m8hsxs5" path="res://parts/turret.tscn" id="4_po3dd"]
@@ -31,6 +31,9 @@ size = Vector2(50, 50)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_3qpnj"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ib3x8"]
+size = Vector3(1, 50, 50)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -45,8 +48,16 @@ environment = SubResource("Environment_fmj4m")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("PlaneMesh_1p6hu")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(6.12323e-17, -1, 0, 1, 6.12323e-17, 0, 0, 0, 1, 25, 25, 0)
+mesh = SubResource("PlaneMesh_1p6hu")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_3qpnj")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 25, 0)
+shape = SubResource("BoxShape3D_ib3x8")
 
 [node name="Control" type="Control" parent="."]
 process_mode = 3

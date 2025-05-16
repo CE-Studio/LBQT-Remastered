@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://xojbugfmuhqu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5h304"]
+rough = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yfya"]
+albedo_color = Color(1, 0.713726, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3mcj4"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aufyi"]
+albedo_color = Color(1.35247e-05, 0.197169, 0.584817, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_65ke3"]
+top_radius = 0.015
+bottom_radius = 0.008
+height = 0.02
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6lnlo"]
+radius = 0.0186506
+height = 0.15988
+
+[node name="Bullet" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_5h304")
+angular_damp = 14.131
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_1yfya")
+mesh = SubResource("CylinderMesh_3mcj4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0599535, 0)
+material_override = SubResource("StandardMaterial3D_aufyi")
+mesh = SubResource("CylinderMesh_65ke3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_6lnlo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="queue_free"]

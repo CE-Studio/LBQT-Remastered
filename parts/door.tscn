@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://du6rumaf6lwk0" path="res://textures/mat/lightwood.tres" id="1_0akvx"]
 [ext_resource type="Material" uid="uid://opt20r3lh406" path="res://textures/mat/metal1.tres" id="1_6iti8"]
-[ext_resource type="Script" path="res://scripts/door.gd" id="1_507qj"]
+[ext_resource type="Script" uid="uid://d21ose5lju4dt" path="res://scripts/door.gd" id="1_507qj"]
 [ext_resource type="Material" uid="uid://rdx16gc4l7ht" path="res://textures/mat/osb.tres" id="2_nma8g"]
 [ext_resource type="Material" uid="uid://d2gorsrnkdfr6" path="res://textures/mat/weight.tres" id="3_2fc6k"]
 [ext_resource type="Texture2D" uid="uid://c0gfkrx6tjr0r" path="res://textures/semaphore.png" id="3_x60je"]
@@ -720,9 +720,9 @@ tracks/12/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mlv3o"]
 _data = {
-"RESET": SubResource("Animation_whtmg"),
-"close": SubResource("Animation_xu4qf"),
-"open": SubResource("Animation_5cjki")
+&"RESET": SubResource("Animation_whtmg"),
+&"close": SubResource("Animation_xu4qf"),
+&"open": SubResource("Animation_5cjki")
 }
 
 [node name="door" type="Node3D"]
